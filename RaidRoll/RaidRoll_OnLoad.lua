@@ -91,9 +91,8 @@ function RR_LootWindowEvent(self, event, ...)
         end
     end
 
-if event == "LOOT_OPENED" then
-        RR_Debug(string.format("%s: arg1 =  %t, arg2 = %t",event,arg1,arg2))
-        --RR_Debug(event .. ": arg1 = " .. (arg1 or "0") .. ", arg2 = " .. (arg2 or "0"))
+    if event == "LOOT_OPENED" then
+        RR_Debug(event .. ": arg1 = " .. (arg1 or "nil") .. ", arg2 = " .. (arg2 or "nil"))
         RR_SendItemInfo()
     end
 end
