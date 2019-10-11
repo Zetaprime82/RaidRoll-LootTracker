@@ -1,0 +1,13 @@
+## Interface: 80200
+## Title: Raid Roll
+## Author: Zetaprime82
+## Notes: An addon that can be used to perform Raid Rolls
+## Version: 1.0.1
+## SavedVariables: RaidRoll_DB,RaidRoll_DBPC
+## SavedVariablesPerCharacter: RR_Accept_All_Rolls,RR_Track_Unannounced_Rolls,RR_Roll_Tracking_Enabled,RR_AllowExtraRolls,RR_Show_Ranks,RR_RankPriority,RR_ExtraWidth,RR_ShowGroupNumber,RR_RollFrameHeight
+
+Libs\LibStub\LibStub.lua
+Libs\CallbackHandler-1.0\CallbackHandler-1.0.lua
+Libs\LibDataBroker-1.1\LibDataBroker-1.1.lua
+
+RaidRoll.xml
