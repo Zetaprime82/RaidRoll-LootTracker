@@ -29,7 +29,7 @@ function RaidRoll_LootPanel_Setup()
     end
 
     -- Msg1 edit box
-    RR_Msg1_FRAME = CreateFrame("Frame", "RR_Msg1_FRAME", RaidRoll_LootPanel)
+    RR_Msg1_FRAME = CreateFrame("Frame", "RR_Msg1_FRAME", RaidRoll_LootPanel, BackdropTemplateMixin and "BackdropTemplate" or nil)
     rr_MsgFrame_backdrop = {
         bgFile = "",
         edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border", -- path to the border texture
@@ -84,7 +84,7 @@ function RaidRoll_LootPanel_Setup()
     end
 
     -- Msg2 edit box
-    RR_Msg2_FRAME = CreateFrame("Frame", "RR_Msg2_FRAME", RaidRoll_LootPanel)
+    RR_Msg2_FRAME = CreateFrame("Frame", "RR_Msg2_FRAME", RaidRoll_LootPanel, BackdropTemplateMixin and "BackdropTemplate" or nil)
     rr_MsgFrame_backdrop = {
         bgFile = "",
         edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border", -- path to the border texture
@@ -139,7 +139,7 @@ function RaidRoll_LootPanel_Setup()
     end
 
     -- Msg3 edit box
-    RR_Msg3_FRAME = CreateFrame("Frame", "RR_Msg3_FRAME", RaidRoll_LootPanel)
+    RR_Msg3_FRAME = CreateFrame("Frame", "RR_Msg3_FRAME", RaidRoll_LootPanel, BackdropTemplateMixin and "BackdropTemplate" or nil)
     rr_MsgFrame_backdrop = {
         bgFile = "",
         edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border", -- path to the border texture
@@ -813,7 +813,7 @@ function RR_SetupLootFrame()
     RR_Loot_String_WindowName = RR_LOOT_FRAME:CreateFontString("Window Name", "ARTWORK", "GameFontNormal")
     RR_Loot_String_WindowName:SetPoint("TOPLEFT", RR_LOOT_FRAME, "TOPLEFT", 8, -8)
     RR_Loot_String_WindowName:SetJustifyH("LEFT")
-    RR_Loot_String_WindowName:SetText("Alex's Loot Tracker")
+    RR_Loot_String_WindowName:SetText("RoR Loot Tracker")
 
     RR_Loot_String_MobName = RR_LOOT_FRAME:CreateFontString("Mob Name", "ARTWORK", "GameFontNormal")
     RR_Loot_String_MobName:SetPoint("TOPLEFT", RR_LOOT_FRAME, "TOPLEFT", 8, -205)
@@ -1023,7 +1023,7 @@ function RR_SetupLootFrame()
         RR_Loot_Received_String_i:SetText("Received: "..i)
         --]]
 
-        RR_LootIcon = CreateFrame("Button", "RR_LootIcon" .. i, RR_LOOT_FRAME)
+        RR_LootIcon = CreateFrame("Button", "RR_LootIcon" .. i, RR_LOOT_FRAME, BackdropTemplateMixin and "BackdropTemplate" or nil)
         --RR_LootIcon:SetFrameStrata("FULLSCREEN")
         RR_LootIcon:SetWidth(40) -- Set these to whatever height/width is needed
         RR_LootIcon:SetHeight(40) -- Set these to whatever height/width is needed

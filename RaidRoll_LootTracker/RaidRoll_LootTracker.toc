@@ -1,4 +1,4 @@
-## Interface: 80200
+## Interface: 90002
 ## Title: Raid Roll - Loot Tracker
 ## Author: Zetaprime82
 ## Notes: Shows a window containing boss loots. Also has customizable messages for distributing loot. (~50kB)
