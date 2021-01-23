@@ -659,7 +659,7 @@ function RaidRoll_Event(self, event, ...)
                 then
                     RR_Debug("Rolling on an item detected")
 
-                    if IsInGuild() then GuildRoster() end
+                    if IsInGuild() then C_GuildInfo.GuildRoster(); end
                     if IsInGuild() then RR_GetEPGPGuildData() end
 
                     --Timestamp of when the rolling was announced
@@ -751,7 +751,7 @@ end
 function RR_ARollHasOccured(Name, Roll, Low, High)
 
     if IsInGuild() then
-        GuildRoster()
+        C_GuildInfo.GuildRoster();
         RR_GetEPGPGuildData()
     end
 
@@ -2389,7 +2389,7 @@ function RR_SetupVariables()
         RR_AutoUpdate_GUILDROSTERTIME = GetTime() + 6
         UIParent:HookScript("OnUpdate", function()
                                             if GetTime() > RR_AutoUpdate_GUILDROSTERTIME then
-                                                if IsInGuild() then GuildRoster() end
+                                                if IsInGuild() then C_GuildInfo.GuildRoster(); end
                                                 RR_Debug("--Auto refreshing guild info again--")
                                                 RR_AutoUpdate_GUILDROSTERTIME = GetTime() + 6
                                             end
