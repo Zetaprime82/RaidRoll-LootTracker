@@ -1,4 +1,4 @@
-## Interface: 80200
+## Interface: 90002
 ## Title: Raid Roll
 ## Author: Zetaprime82
 ## Notes: An addon that can be used to perform Raid Rolls

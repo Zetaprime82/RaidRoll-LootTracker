@@ -608,7 +608,7 @@ function Setup_RR_Panel()
 
     ---------------------------------------------------- RaidRoll_DBPC[UnitName("player")]["Time_Offset"]
 
-    RR_Panel_GuildRankFrame = CreateFrame("Frame", "RR_Panel_GuildRankFrame", RaidRoll_PriorityPanel)
+    RR_Panel_GuildRankFrame = CreateFrame("Frame", "RR_Panel_GuildRankFrame", RaidRoll_PriorityPanel, BackdropTemplateMixin and "BackdropTemplate" or nil)
 
     local backdrop = {
         bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background", -- path to the background texture

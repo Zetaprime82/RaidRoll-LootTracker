@@ -105,7 +105,7 @@ function RR_ExtraFrame_Options()
 
     --------------------------------------------------------------
 
-    RR_BottomFrame = CreateFrame("Frame", "RR_Frame", RR_RollFrame)
+    RR_BottomFrame = CreateFrame("Frame", "RR_Frame", RR_RollFrame, BackdropTemplateMixin and "BackdropTemplate" or nil)
 
     local backdrop = {
         bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background", -- path to the background texture
@@ -504,7 +504,7 @@ end
 -- sets up the name frame
 function RR_SetupNameFrame()
 
-    RR_NAME_FRAME = CreateFrame("Frame", nil, RR_RollFrame)
+    RR_NAME_FRAME = CreateFrame("Frame", nil, RR_RollFrame, BackdropTemplateMixin and "BackdropTemplate" or nil)
 
     local backdrop = {
         --bgFile="Interface\DialogFrame\UI-DialogBox-Background",  -- path to the background texture

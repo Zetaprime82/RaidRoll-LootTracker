@@ -151,7 +151,7 @@
 
                 <FontString name="Raid_Roll_Name_String"
                             inherits="GameFontNormal"
-                            text="Alex's Raid Roller">
+                            text="RoR Raid Roller">
                     <Anchors>
                         <Anchor point="TOPLEFT">
                             <Offset>
