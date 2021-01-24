@@ -1,8 +1,8 @@
 ## Interface: 90002
 ## Title: Raid Roll
-## Author: Zetaprime82 and Hatsjoe
+## Author: Zetaprime82
 ## Notes: An addon that can be used to perform Raid Rolls
-## Version: 1.0.2
+## Version: 1.0.1
 ## SavedVariables: RaidRoll_DB,RaidRoll_DBPC
 ## SavedVariablesPerCharacter: RR_Accept_All_Rolls,RR_Track_Unannounced_Rolls,RR_Roll_Tracking_Enabled,RR_AllowExtraRolls,RR_Show_Ranks,RR_RankPriority,RR_ExtraWidth,RR_ShowGroupNumber,RR_RollFrameHeight
 

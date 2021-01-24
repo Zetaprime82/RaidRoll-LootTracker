@@ -1024,6 +1024,7 @@ function RR_SetupLootFrame()
         --]]
 
         RR_LootIcon = CreateFrame("Button", "RR_LootIcon" .. i, RR_LOOT_FRAME, BackdropTemplateMixin and "BackdropTemplate" or nil)
+        -- RR_LootIcon = CreateFrame("Button", "RR_LootIcon" .. i, RR_LOOT_FRAME, "UIPanelButtonTemplate")
         --RR_LootIcon:SetFrameStrata("FULLSCREEN")
         RR_LootIcon:SetWidth(40) -- Set these to whatever height/width is needed
         RR_LootIcon:SetHeight(40) -- Set these to whatever height/width is needed
@@ -1327,10 +1328,14 @@ function RR_MouseOver(ID, TryOnItem, InsertItem)
     local j = i + RaidRoll_Loot_Slider:GetValue() - 1
 
     local Current_Window = RaidRoll_DB["Loot"]["CURRENT WINDOW"]
-    --MOB_ID = RaidRoll_DB["Loot"][Current_Window]
+    -- print(RaidRoll_DB["Loot"][1]["ITEM_1"]["ITEMLINK"])
+    --MOB_ID = RaidRoll_DB["Loot"][Current/_Window]
+
+    -- RR_Debug("ID: " .. ID)
 
     GameTooltip_SetDefaultAnchor(GameTooltip, UIParent)
     GameTooltip:ClearAllPoints()
+    GameTooltip:SetOwner(UIParent,"ANCHOR_NONE")
     GameTooltip:SetPoint("bottomleft", UIParent, "topright", 0, 0)
     GameTooltip:ClearLines()
 

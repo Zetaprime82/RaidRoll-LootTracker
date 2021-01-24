@@ -429,7 +429,7 @@ function RR_SetupSlashCommands()
 end
 
 function RaidRoll_OnLoad(self)
-    RR_Test("|cff00c0ff RoR Raid Roll Addon - Loaded |r")
+    RR_Test("Kilerpet's Raid Roll Addon - Loaded")
 
     -- local f = CreateFrame("Frame")
 
@@ -1676,7 +1676,14 @@ function RRL_Command(cmd)
     local cmd_s = string.lower(cmd)
 
     if cmd_s == "foobar" then
-        C_ChatInfo.SendAddonMessage("RRL", "Alpha\ax\aTe1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890st\aTestMob\ax\a\124cff1eff00\124Hitem:1210:0:0:0:0:0:0:0:0\124h[Shadowgem]\124h\124r\a4\aInterface\\Icons\\INV_Misc_Gem_Amethyst_01\aShadowgem\a20", "GUILD")
+        RR_Debug("Trying print")
+        for index, data in ipairs(_G) do
+            print(index)
+            for key, value in pairs(data) do
+                print('\t', key, value)
+            end
+        end
+        return
     end
 
     if cmd_s == "options" or cmd_s == "option" or cmd_s == "config" then

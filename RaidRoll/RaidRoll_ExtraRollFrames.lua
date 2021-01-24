@@ -567,7 +567,8 @@ function RR_MouseOver_NameFrame()
 
     GameTooltip_SetDefaultAnchor(GameTooltip, UIParent)
     GameTooltip:ClearAllPoints()
-    GameTooltip:SetPoint("bottom", RR_NAME_FRAME, "top", 0, 0)
+    GameTooltip:SetOwner(UIParent,"ANCHOR_NONE")
+    GameTooltip:SetPoint("bottom", UIParent, "top", 0, 0)
     GameTooltip:ClearLines()
 
     if string.find(rr_Item[rr_CurrentRollID], "ID ") == nil then
