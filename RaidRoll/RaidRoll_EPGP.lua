@@ -40,7 +40,7 @@ function EPGP_Event_Function(self, event, ...)
             RR_Debug("EPGP String Found, updating guild info")
             if IsInGuild() then
                 RR_GetEPGPGuildData()
-                GuildRoster()
+                C_GuildInfo.GuildRoster()
             end
         end
     end

@@ -293,7 +293,7 @@ RR_AddonMessageReceived("RRL \tAlpha\ax\aTest\aTestMob\ax\a\124cff1eff00\124Hite
 --]]
 
 function RR_DC()
-    SendAddonMessage("RRL", "Alpha\ax\aTe1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890st\aTestMob\ax\a\124cff1eff00\124Hitem:1210:0:0:0:0:0:0:0:0\124h[Shadowgem]\124h\124r\a4\aInterface\\Icons\\INV_Misc_Gem_Amethyst_01\aShadowgem\a20", "GUILD")
+    C_ChatInfo.SendAddonMessage("RRL", "Alpha\ax\aTe1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890st\aTestMob\ax\a\124cff1eff00\124Hitem:1210:0:0:0:0:0:0:0:0\124h[Shadowgem]\124h\124r\a4\aInterface\\Icons\\INV_Misc_Gem_Amethyst_01\aShadowgem\a20", "GUILD")
 end
 
 function RR_AddonMessageReceived(String, Channel)
@@ -309,7 +309,7 @@ function RR_AddonMessageReceived(String, Channel)
             if Version == nil then
                 if time() >= RR_LastItemDataReSent + 5 then
                     if IsInRaid() or IsInGroup() then
-                        SendAddonMessage("RRL", "Request", IsInRaid() and "RAID" or "PARTY")
+                        C_ChatInfo.SendAddonMessage("RRL", "Request", IsInRaid() and "RAID" or "PARTY")
                     end
                 end
             end
@@ -738,7 +738,7 @@ function RR_AddonMessageReceived(String, Channel)
         else
             if time() >= RR_LastItemDataReSent + 5 then
                 if IsInRaid() or IsInGroup() then
-                    SendAddonMessage("RRL", "Request", IsInRaid() and "RAID" or "PARTY")
+                    C_ChatInfo.SendAddonMessage("RRL", "Request", IsInRaid() and "RAID" or "PARTY")
                 end
             end
         end
@@ -1331,7 +1331,7 @@ function RR_MouseOver(ID, TryOnItem, InsertItem)
 
     GameTooltip_SetDefaultAnchor(GameTooltip, UIParent)
     GameTooltip:ClearAllPoints()
-    GameTooltip:SetPoint("bottomleft", _G[ID], "topright", 0, 0)
+    GameTooltip:SetPoint("bottomleft", UIParent, "topright", 0, 0)
     GameTooltip:ClearLines()
 
     if RaidRoll_DB["Loot"][Current_Window] ~= nil then
