@@ -92,7 +92,7 @@ function RR_LootWindowEvent(self, event, ...)
     end
 
     if event == "LOOT_OPENED" then
-        RR_Debug(event .. ": arg1 = " .. (arg1 or "nil") .. ", arg2 = " .. (arg2 or "nil"))
+        RR_Debug(event .. ": arg1 = " .. (tostring(arg1) or "nil") .. ", arg2 = " .. (tostring(arg2) or "nil"))
         RR_SendItemInfo()
     end
 end
@@ -132,7 +132,7 @@ function RR_SendItemInfo()
         -- Start scanning for items
         for i = 1, numLootItems do
             -- If its an item
-            local lootIcon, lootName, lootQuantity, rarity = GetLootSlotInfo(i)
+            local lootIcon, lootName, lootQuantity, currencyID, rarity, locked, isQuestItem, questId, isActive = GetLootSlotInfo(i)
 
             --[[
                 texture - Path to an icon texture for the item or amount of money (string)
@@ -144,6 +144,8 @@ function RR_SendItemInfo()
 
             if not lootQuantity or lootQuantity == 0 then
                 RR_Debug("Skipping " .. tostring(lootName))
+            elseif currencyID ~= nil then
+                RR_Debug("Skipping, is currency " .. tostring(currencyID))
             else
                 if WeHaveFoundAnItem == false then
                     -- If we are currently looking at the last window
@@ -170,7 +172,7 @@ function RR_SendItemInfo()
                 if ItemLink ~= nil then
 
                     RR_Debug("Loot: slot=" .. i .. ", link=" .. ItemLink .. ", icon=" .. lootIcon .. ", name=" .. lootName
-                        .. ", quantity=" .. lootQuantity .. ", rarity=" .. rarity)
+                        .. ", quantity=" .. lootQuantity .. ", rarity=" .. (rarity or "nil"))
 
                     -- Create an array
                     if RR_Check_lootName == nil then RR_Check_lootName = {} end
@@ -291,6 +293,7 @@ function RR_SendItemInfo()
                         )
                     --]]
 
+                    RR_Debug("Item level: " .. (ItemLvl or "nil"))
                     if ItemLvl ~= nil then
                         -- String = (Version .. Seperator ..
                             -- player_name .. Seperator ..
@@ -306,10 +309,12 @@ function RR_SendItemInfo()
                             ItemLvl .. Seperator ..
 							ItemLink)
 
+                        RR_Debug("RR_LastItemDataReSent: " .. RR_LastItemDataReSent)
                         if time() >= RR_LastItemDataReSent + 60 then
                             RR_LastItemDataReSent = time() - 10
                             if IsInRaid() or IsInGroup() then
-                                SendAddonMessage("RRL", "Request", IsInRaid() and "RAID" or "PARTY")
+                                RR_Debug("Sending addon message")
+                                C_ChatInfo.SendAddonMessage("RRL", "Request", IsInRaid() and "RAID" or "PARTY")
                             end
                         end
 
@@ -325,13 +330,16 @@ function RR_SendItemInfo()
                         -- Send items with epic or higher quality, also send items on the acceptable items list.
                         -- Also, only send items from an acceptable zone (raid)
                         if rarity > 3 or RaidRoll_DB["debug"] == true or AcceptItem == true then
+                            RR_Debug("In if statement for sending")
                             if AcceptableZone == true or RaidRoll_DB["debug"] == true then
                                 if DontAcceptItem == false or RaidRoll_DB["debug"] == true then
                                     if IsInRaid() or IsInGroup() then
-                                        SendAddonMessage("RRL", String, IsInRaid() and "RAID" or "PARTY")
+                                        RR_Debug("In raid or group, sending addon message")
+                                        C_ChatInfo.SendAddonMessage("RRL", String, IsInRaid() and "RAID" or "PARTY")
                                     end
                                     if IsInGuild() then
-                                        SendAddonMessage("RRL", String, "GUILD")
+                                        RR_Debug("In guild, sending addon message")
+                                        C_ChatInfo.SendAddonMessage("RRL", String, "GUILD")
                                     end
                                 end
                             end
@@ -352,6 +360,7 @@ function RR_SendItemInfo()
                     end
 
                     if RaidRoll_LootTrackerLoaded == true then
+                        RR_Debug("LootTrackerLoaded, display refresh")
                         RR_Loot_Display_Refresh()
                     end
                 end
@@ -593,12 +602,12 @@ function RaidRoll_Event(self, event, ...)
         if RaidRoll_DB["debug"] == true then
             if arg1 == nil or (arg1 ~= nil and (arg1 ~= "Crb" and arg1 ~= "LGP")) then
                 RR_Test("Event " .. event)
-                if arg1 ~= nil then RR_Test("1 .. " .. arg1) end
-                if arg2 ~= nil then RR_Test("2 .. " .. arg2) end
-                if arg3 ~= nil then RR_Test("3 .. " .. arg3) end
-                if arg4 ~= nil then RR_Test("4 .. " .. arg4) end
-                if arg5 ~= nil then RR_Test("5 .. " .. arg5) end
-                if arg6 ~= nil then RR_Test("6 .. " .. arg6) end
+                if arg1 ~= nil then RR_Test("1 .. " .. tostring(arg1)) end
+                if arg2 ~= nil then RR_Test("2 .. " .. tostring(arg2)) end
+                if arg3 ~= nil then RR_Test("3 .. " .. tostring(arg3)) end
+                if arg4 ~= nil then RR_Test("4 .. " .. tostring(arg4)) end
+                if arg5 ~= nil then RR_Test("5 .. " .. tostring(arg5)) end
+                if arg6 ~= nil then RR_Test("6 .. " .. tostring(arg6)) end
             end
         end
     end
@@ -659,7 +668,7 @@ function RaidRoll_Event(self, event, ...)
                 then
                     RR_Debug("Rolling on an item detected")
 
-                    if IsInGuild() then C_GuildInfo.GuildRoster(); end
+                    if IsInGuild() then C_GuildInfo.GuildRoster() end
                     if IsInGuild() then RR_GetEPGPGuildData() end
 
                     --Timestamp of when the rolling was announced
@@ -751,7 +760,7 @@ end
 function RR_ARollHasOccured(Name, Roll, Low, High)
 
     if IsInGuild() then
-        C_GuildInfo.GuildRoster();
+        C_GuildInfo.GuildRoster()
         RR_GetEPGPGuildData()
     end
 
@@ -1666,6 +1675,10 @@ function RRL_Command(cmd)
 
     local cmd_s = string.lower(cmd)
 
+    if cmd_s == "foobar" then
+        C_ChatInfo.SendAddonMessage("RRL", "Alpha\ax\aTe1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890st\aTestMob\ax\a\124cff1eff00\124Hitem:1210:0:0:0:0:0:0:0:0\124h[Shadowgem]\124h\124r\a4\aInterface\\Icons\\INV_Misc_Gem_Amethyst_01\aShadowgem\a20", "GUILD")
+    end
+
     if cmd_s == "options" or cmd_s == "option" or cmd_s == "config" then
         RR_OptionsScreenToggle()
         return
@@ -2009,6 +2022,7 @@ function RRL_Command(cmd)
     -- Get any item link from the command
     local firstItemLink = string.match(cmd, "([|]%S%S-item:..-[|]h[|]r)")
     if firstItemLink ~= nil then
+        RR_Debug("firstItemLink: " .. firstItemLink)
         RR_ItemLink = firstItemLink
     end
 
@@ -2389,7 +2403,7 @@ function RR_SetupVariables()
         RR_AutoUpdate_GUILDROSTERTIME = GetTime() + 6
         UIParent:HookScript("OnUpdate", function()
                                             if GetTime() > RR_AutoUpdate_GUILDROSTERTIME then
-                                                if IsInGuild() then C_GuildInfo.GuildRoster(); end
+                                                if IsInGuild() then GuildRoster() end
                                                 RR_Debug("--Auto refreshing guild info again--")
                                                 RR_AutoUpdate_GUILDROSTERTIME = GetTime() + 6
                                             end

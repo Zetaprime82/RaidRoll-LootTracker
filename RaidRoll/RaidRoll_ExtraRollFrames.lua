@@ -663,7 +663,7 @@ function RR_FinishRolling(dontannounce, settime, button)
             RR_Debug2(numLootItems .. " items found.")
             for i = 1, numLootItems do
                 -- If its an item
-                local lootIcon, lootName, lootQuantity, rarity = GetLootSlotInfo(i)
+                local lootIcon, lootName, lootQuantity, currencyID, rarity, locked, isQuestItem, questId, isActive = GetLootSlotInfo(i)
 
                 --[[
                 texture - Path to an icon texture for the item or amount of money (string)
