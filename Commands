@@ -1,0 +1,23 @@
+Commands
+
+    /rr show - Shows the roll tracking window
+    /rr disable - Disables tracking
+    /rr enable - Enables tracking
+    /rr mark [Name or RollerID*] - Marks the roller with an !
+    /rr unmark [Name or RollerID*] - Removes the ! from the roller
+    /rr mark !reset - Resets all ! on rollers
+    /rr all - Toggles tracking of all types of rolls (e.g. 1-50, 50-100)
+    /rr unan (/rr unannounced) - Toggles tracking all rolls or just announced rolls (An announced roll is when someone says "[Itemlink] Roll"), creates a new ID after 60 seconds
+    /rr assign de <player> - Assigns <player> as disenchanter, if <player> is left blank it assigns your target as the disenchanter
+    /rr assign bank <player> - Assigns <player> as banker, if <player> is left blank it assigns your target as the banker 
+
+3. Loot Tracker
+Loot Window
+
+While using this addon you will send information regarding any epic loot to the raid and guild in the hidden addon channel. Anyone else using the addon will pick up these messages in raid (you can also pick up messages in guild by enabling the option in the options menu (see 4. Options Menu) ) and display the loots in the loot tracker window. You can link all the items that dropped from the current boss by clicking "Link Loot". "Clear Data" will clear all data. M1 and M2 are buttons that only show up for raid leader and assists, they announce in raid chat the strings: "Roll [Item] Main Spec" and "Roll [Item] Off Spec" {[Item] gets replaced by the itemlink automatically}. These strings can be changed in the options menu. You can also enable a third M3 button in the options.
+
+... more to come
+Setting Messages
+Commands
+
+    /rr loot - Shows the loot tracking window 
