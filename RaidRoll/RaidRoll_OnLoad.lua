@@ -429,7 +429,7 @@ function RR_SetupSlashCommands()
 end
 
 function RaidRoll_OnLoad(self)
-    RR_Test("Kilerpet's Raid Roll Addon - Loaded")
+    RR_Test("|cff00c0ff RoR Raid Roll Addon - Loaded |r")
 
     -- local f = CreateFrame("Frame")
 
