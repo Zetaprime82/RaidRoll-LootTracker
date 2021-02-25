@@ -1,4 +1,4 @@
-## Interface: 90002
+## Interface: 90005
 ## Title: |cff00c0ff Raid Roll v9.0 |r
 ## Author: Cybertron and Hatsjoe
 ## Notes: An addon that can be used to perform Raid Rolls
