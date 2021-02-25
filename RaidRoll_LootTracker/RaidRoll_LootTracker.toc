@@ -1,6 +1,6 @@
 ## Interface: 90005
 ## Title: |cff00c0ff Raid Roll - Loot Tracker v9.0 |r
-## Author: Zetaprime82
+## Author: Cybertron and Hatsjoe
 ## Notes: Shows a window containing boss loots. Also has customizable messages for distributing loot. (~50kB)
 ## Dependencies: RaidRoll
 
